@@ -1,5 +1,6 @@
 # Playlist visualizer for Spotify
 Graphical representation of your favorite playlist! Generate a graph, which shows how many songs of an artist you have added (size of a node), and visualize every song that two artists had recorded together (size of an edge). It looks very cool, doesn’t it? So go ahead, and visualize your playlist! 
+
 ![Example](./img/kaleidoscope.png)
 ## How to use it?
 Input your data in .env file:
