@@ -11,7 +11,7 @@ from time import sleep
 load_dotenv()
 headers = {'Accept': 'application/json','Content-Type': 'application/json','Authorization': f'Bearer {os.environ["TOKEN"]}'}
 params = {'market': 'PL', 'limit': '100'}
-cooldown = 0.5
+cooldown = 1
 
 artists = {}
 connections = {}

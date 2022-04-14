@@ -23,5 +23,5 @@ Then just run the python script:
 ```
 python main.py
 ```
-If the playlist is big, it may take some time, cause not to exceed rate limits every request has a 500 ms cooldown (which can be easily changed)
+If the playlist is big, it may take some time, cause not to exceed rate limits every request has a 1s cooldown (which can be easily changed)
 
