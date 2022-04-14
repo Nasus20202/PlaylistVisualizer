@@ -1,8 +1,10 @@
+from unicodedata import name
 from dotenv import load_dotenv
 from pyvis.network import Network
 import os
 import requests
 import json
+import random
 
 # API token and playlist ID is stored in .env file (TOKEN and PLAYLIST)
 # You can generate your own token here: https://developer.spotify.com/console/get-playlist-tracks/
@@ -30,8 +32,15 @@ def get_connections(link):
                 if(first_artist is not second_artists):
                     connections[first_artist][second_artists] = connections[first_artist][second_artists] + 1 if second_artists in connections[first_artist] else 1
     next = data["next"]
-    if(next != None):
-        get_connections(next)
-
+    #if(next != None):
+        #get_connections(next)
 get_connections(f'https://api.spotify.com/v1/playlists/{os.environ["PLAYLIST"]}/tracks')
 
+# Visualize a playlists as a network
+net = Network()
+
+for artist in artists:
+    songs = artists[artist]
+    net.add_node(n_id=artist, name=artist, size=songs, color='#'+''.join([random.choice('0123456789ABCDEF') for j in range(6)])) # Random color for every node, looks cool :)
+
+net.show(f'Playlist - {os.environ["PLAYLIST"]}.html')

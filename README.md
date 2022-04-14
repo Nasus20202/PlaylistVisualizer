@@ -1,1 +1,1 @@
-#Playlist visualizer for Spotify
+# Playlist visualizer for Spotify
