@@ -33,7 +33,10 @@ def get_artist_photo(artist_id, resolution=640):
         case 160:
             id = 2
     sleep(cooldown) # For API rate limits
-    return data["images"][id]['url']
+    if(len(data["images"])>0):
+        return data["images"][id]['url']
+    else:
+        return None
 
 # Get info about artists from Spotify API and then count artists and their connections
 def get_connections(link):
