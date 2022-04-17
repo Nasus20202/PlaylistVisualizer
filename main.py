@@ -18,6 +18,8 @@ connections = {}
 artist_id = {}
 def get_playlist_name(playlist_id):
     response = requests.get(f'https://api.spotify.com/v1/playlists/{playlist_id}', headers=headers, params=params)
+    if response.status_code != 200:
+        response = requests.get(f'https://api.spotify.com/v1/playlists/{playlist_id}', headers=headers, params=params)
     data = json.loads(response.text)
     sleep(cooldown) # For API rate limits
     return data["name"]
@@ -25,6 +27,8 @@ def get_playlist_name(playlist_id):
 # Get artist photo, resolutions : 640, 320, 160
 def get_artist_photo(artist_id, resolution=640):
     response = requests.get(f'https://api.spotify.com/v1/artists/{artist_id}', headers=headers, params=params)
+    if response.status_code != 200:
+        response = requests.get(f'https://api.spotify.com/v1/artists/{artist_id}', headers=headers, params=params)
     data = json.loads(response.text)
     id = 0
     match resolution:
@@ -41,6 +45,8 @@ def get_artist_photo(artist_id, resolution=640):
 # Get info about artists from Spotify API and then count artists and their connections
 def get_connections(link):
     response = requests.get(link, headers=headers, params=params)
+    if response.status_code != 200:
+        response = requests.get(link, headers=headers, params=params)
     data = json.loads(response.text)
     for track in data["items"]:
         local_artists = []
